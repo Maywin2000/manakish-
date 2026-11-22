@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Manakish für Marie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Nunito:wght@400;600;700&display=swap">
+<style>
+/* Layout: one narrow kraft-paper recipe card, handwritten headings, tap-to-check lists */
+:root{
+  --bg:#EFE4D3; --paper:#FBF6EE; --ink:#2A1D12; --muted:#7A6450; --kraft:#B98A5E; --herb:#6F7F3A; --line:#E3D5C2; --done:#A8977F;
+  --hand:"Caveat","Segoe Print","Bradley Hand",cursive; --body:"Nunito",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1C1510;--paper:#2A2018;--ink:#F3E9DB;--muted:#C2AD95;--kraft:#C99A6C;--herb:#A9B96A;--line:#3C3026;--done:#7E6E5C;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1C1510;--paper:#2A2018;--ink:#F3E9DB;--muted:#C2AD95;--kraft:#C99A6C;--herb:#A9B96A;--line:#3C3026;--done:#7E6E5C;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 40px}
+.card{max-width:520px;margin:0 auto;background:var(--paper);border-radius:14px;padding:28px 22px 30px;display:flex;flex-direction:column;gap:26px}
+header{text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.eyebrow{font-family:var(--hand);font-size:24px;color:var(--kraft);line-height:1}
+h1{font-family:var(--hand);font-weight:700;font-size:58px;line-height:.95;margin:0;text-wrap:balance}
+.sub{color:var(--muted);margin:0;max-width:30ch}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:8px}
+.chip{border:1.5px dashed var(--kraft);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+h2{font-family:var(--hand);font-weight:700;font-size:34px;margin:0 0 6px;line-height:1}
+h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:14px 0 4px;font-weight:700}
+ul,ol{list-style:none;margin:0;padding:0}
+.ing li,.steps li{border-bottom:1px solid var(--line)}
+.ing button,.steps button{all:unset;box-sizing:border-box;display:flex;gap:12px;align-items:flex-start;width:100%;padding:10px 2px;cursor:pointer}
+.ing button:focus-visible,.steps button:focus-visible,.stars button:focus-visible{outline:2px solid var(--kraft);outline-offset:2px;border-radius:6px}
+.box{flex:none;width:20px;height:20px;border:2px solid var(--kraft);border-radius:5px;margin-top:3px;display:grid;place-items:center}
+.box svg{opacity:0}
+.num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--kraft);color:var(--paper);font-weight:700;font-size:15px;display:grid;place-items:center;font-variant-numeric:tabular-nums}
+.amt{font-weight:700;min-width:5.2em;display:inline-block;font-variant-numeric:tabular-nums}
+.done{color:var(--done)} .done .txt{text-decoration:line-through}
+.done .box{background:var(--kraft)} .done .box svg{opacity:1}
+.done .num{background:var(--done)}
+.hint{font-size:14px;color:var(--muted);margin:4px 0 0}
+.tip{border:1.5px dashed var(--herb);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tip b{font-family:var(--hand);font-size:26px;color:var(--herb);font-weight:700;line-height:1}
+.tip p{margin:0}
+footer{text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}
+.stars{display:flex;gap:4px}
+.stars button{all:unset;cursor:pointer;font-size:32px;line-height:1;color:var(--line);padding:2px}
+.stars button.on{color:var(--kraft)}
+.bye{font-family:var(--hand);font-size:30px;margin:6px 0 0}
+@media (prefers-reduced-motion:no-preference){.ing button,.steps button,.stars button{transition:color .2s}}
+</style>
+</head>
+<body>
+
+<main class="card">
+  <header>
+    <svg width="150" height="96" viewBox="0 0 150 96" aria-hidden="true">
+      <ellipse cx="75" cy="52" rx="66" ry="36" fill="var(--kraft)"/>
+      <ellipse cx="75" cy="50" rx="56" ry="28" fill="var(--herb)" opacity=".85"/>
+      <g fill="var(--paper)" opacity=".75"><circle cx="50" cy="44" r="2"/><circle cx="64" cy="58" r="1.6"/><circle cx="80" cy="40" r="2"/><circle cx="96" cy="54" r="1.8"/><circle cx="108" cy="42" r="1.4"/><circle cx="72" cy="48" r="1.4"/><circle cx="88" cy="64" r="1.6"/><circle cx="58" cy="34" r="1.2"/><circle cx="102" cy="34" r="1.2"/><circle cx="42" cy="56" r="1.4"/></g>
+      <g stroke="var(--ink)" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"><path d="M60 14 q-5 -6 0 -12"/><path d="M75 12 q-5 -6 0 -12"/><path d="M90 14 q-5 -6 0 -12"/></g>
+    </svg>
+    <div class="eyebrow">Tipp Nummer zwei</div>
+    <h1>Manakish</h1>
+    <p class="sub">Libanesisches Fladenbrot mit Za'atar und Olivenöl. Warm aus dem Ofen am besten.</p>
+    <div class="chips"><span class="chip">4 Stück</span><span class="chip">20 Min. Arbeit</span><span class="chip">1 Std. Gehzeit</span><span class="chip">10 Min. Ofen</span></div>
+  </header>
+
+  <section>
+    <h2>Das brauchst du</h2>
+    <p class="hint">Antippen zum Abhaken.</p>
+    <h3>Teig</h3>
+    <ul class="ing" data-list="ing">
+      <li><button type="button" id="i1"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">300 g</span>Mehl (Type 550)</span></button></li>
+      <li><button type="button" id="i2"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">1 Päckchen</span>Trockenhefe (7 g)</span></button></li>
+      <li><button type="button" id="i3"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">1 TL</span>Zucker</span></button></li>
+      <li><button type="button" id="i4"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">1 TL</span>Salz</span></button></li>
+      <li><button type="button" id="i5"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">2 EL</span>Olivenöl</span></button></li>
+      <li><button type="button" id="i6"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">ca. 180 ml</span>lauwarmes Wasser</span></button></li>
+    </ul>
+    <h3>Belag</h3>
+    <ul class="ing">
+      <li><button type="button" id="i7"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">4 EL</span>Za'atar (von Tag 12)</span></button></li>
+      <li><button type="button" id="i8"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">6 EL</span>gutes Olivenöl</span></button></li>
+    </ul>
+    <h3>Füllungen zum Einrollen (optional und je nach Wahl)</h3>
+    <ul class="ing">
+      <li><button type="button" id="i9"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">200 g</span>Labneh oder griechischer Joghurt</span></button></li>
+      <li><button type="button" id="i10"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">2</span>Tomaten, in Scheiben</span></button></li>
+      <li><button type="button" id="i11"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">½</span>Gurke, in Scheiben</span></button></li>
+      <li><button type="button" id="i12"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">1 Bund</span>frische Minze</span></button></li>
+      <li><button type="button" id="i13"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">1 Handvoll</span>schwarze Oliven</span></button></li>
+      <li><button type="button" id="i14"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">½</span>rote Zwiebel, fein geschnitten</span></button></li>
+    </ul>
+    <h3>Käse-Variante</h3>
+    <p class="hint">Vor dem Backen auf eine Hälfte Za'atar, auf die andere Käse. Oder beides gemischt.</p>
+    <ul class="ing">
+      <li><button type="button" id="i15"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">125 g</span>Mozzarella, gerieben</span></button></li>
+      <li><button type="button" id="i16"><span class="box"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3" stroke="var(--paper)" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span><span class="txt"><span class="amt">100 g</span>Feta oder Halloumi, zerbröselt</span></button></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>So geht's</h2>
+    <p class="hint">Erledigte Schritte antippen.</p>
+    <ol class="steps">
+      <li><button type="button" id="s1"><span class="num">1</span><span class="txt">Hefe und Zucker im lauwarmen Wasser verrühren und 5 Minuten stehen lassen, bis es leicht schäumt.</span></button></li>
+      <li><button type="button" id="s2"><span class="num">2</span><span class="txt">Mehl, Salz, 2 EL Olivenöl und das Hefewasser 8 bis 10 Minuten zu einem glatten, weichen Teig kneten.</span></button></li>
+      <li><button type="button" id="s3"><span class="num">3</span><span class="txt">Abgedeckt an einem warmen Ort etwa 1 Stunde gehen lassen, bis er sich ungefähr verdoppelt hat.</span></button></li>
+      <li><button type="button" id="s4"><span class="num">4</span><span class="txt">Ofen auf 250 °C Ober- und Unterhitze vorheizen, das Blech gleich mit hineinschieben.</span></button></li>
+      <li><button type="button" id="s5"><span class="num">5</span><span class="txt">Za'atar mit 6 EL Olivenöl zu einer streichfähigen Paste verrühren.</span></button></li>
+      <li><button type="button" id="s6"><span class="num">6</span><span class="txt">Teig in 4 Stücke teilen, rund und etwa einen halben Zentimeter dünn ausrollen. Mit den Fingerspitzen kleine Mulden hineindrücken.</span></button></li>
+      <li><button type="button" id="s7"><span class="num">7</span><span class="txt">Paste großzügig verstreichen, einen schmalen Rand frei lassen. Für die Käse-Variante jetzt den Käse darauf oder auf eine Hälfte streuen.</span></button></li>
+      <li><button type="button" id="s8"><span class="num">8</span><span class="txt">Auf Backpapier aufs heiße Blech ziehen und 8 bis 10 Minuten backen, bis der Rand goldbraun ist.</span></button></li>
+      <li><button type="button" id="s9"><span class="num">9</span><span class="txt">Warm essen. Wer mag, bestreicht sie mit Labneh, belegt sie mit den Füllungen und rollt sie zusammen. Schmeckt aber auch einfach so, direkt aus der Hand.</span></button></li>
+    </ol>
+  </section>
+
+  <aside class="tip">
+    <b>Psst</b>
+    <p>Kein Stress, back sie einfach, wann du Lust und Zeit hast. Kleiner Tipp: Ab morgen werden sie noch ein bisschen besser. Warum, siehst du dann.</p>
+  </aside>
+
+  <footer>
+    <h2>Deine Rezension</h2>
+    <div class="stars" role="group" aria-label="Bewertung">
+      <button type="button" id="r1" aria-label="1 Stern">★</button><button type="button" id="r2" aria-label="2 Sterne">★</button><button type="button" id="r3" aria-label="3 Sterne">★</button><button type="button" id="r4" aria-label="4 Sterne">★</button><button type="button" id="r5" aria-label="5 Sterne">★</button>
+    </div>
+    <p class="hint">Fotos werden wie immer gern entgegengenommen.</p>
+    <p class="bye">Guten Appetit ✦</p>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var KEY="manakish-state";var st={};
+  try{st=JSON.parse(localStorage.getItem(KEY)||"{}")||{}}catch(e){st={}}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  document.querySelectorAll(".ing button,.steps button").forEach(function(b){
+    var li=b.parentNode;
+    if(st[b.id]){li.classList.add("done");b.setAttribute("aria-pressed","true")}else{b.setAttribute("aria-pressed","false")}
+    b.addEventListener("click",function(){var on=!li.classList.contains("done");li.classList.toggle("done",on);b.setAttribute("aria-pressed",on?"true":"false");st[b.id]=on;save()});
+  });
+  var stars=[].slice.call(document.querySelectorAll(".stars button"));
+  function paint(n){stars.forEach(function(s,i){s.classList.toggle("on",i<n);s.setAttribute("aria-pressed",i<n?"true":"false")})}
+  paint(st.rating||0);
+  stars.forEach(function(s,i){s.addEventListener("click",function(){st.rating=(st.rating===i+1)?0:i+1;paint(st.rating);save()})});
+})();
+</script>
+</body>
+</html>
